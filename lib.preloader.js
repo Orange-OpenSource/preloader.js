@@ -1,6 +1,16 @@
-/**
+/*!
+ * Copyright 2011 France Télécom
+ * This software is distributed under the terms of either the MIT
+ * License or the GNU General Public License (GPL) Version 2 or later.
+ * See GPL-LICENSE.txt and MIT-LICENSE.txt files for more details.
+ */
+ 
+/* preloader.js
+ * Version : 1
  * 
- * Was really inspired by jQuery plugin preloadCssImages
+ * Authors: Julien Wajsberg <julien.wajsberg@orange.com>
+ * 
+ * This was really inspired by jQuery plugin preloadCssImages
  * http://www.filamentgroup.com/examples/preloadImages/scripts/preloadCssImages.jQuery_v5.js
  * 
  * Its license is:
@@ -15,14 +25,14 @@
  * Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL (filamentgroup.com/examples/gpl-license.txt) licenses.
  * ----
  * 
- * We also use the technique described in http://www.thecssninja.com/css/even-better-image-preloading-with-css2
+ * We also use the technique described in
+ * http://www.thecssninja.com/css/even-better-image-preloading-with-css2
  *
- * we uses jQuery (but try to get rid of it), and lib.cssrule.js for the CSS-loading-mode
- * --------------------------------------------------------------------
+ * we uses jQuery (but try to get rid of it), and lib.cssrule.js for the
+ * CSS-loading-mode.
  */
 
-var preloader = (function($, window, document) {
-	
+var preloader = (function(window, document) {
 	var settings = {
 		errorDelay: 999 // handles 404-Errors in IE
 	};
@@ -31,8 +41,17 @@ var preloader = (function($, window, document) {
 	var loaded = 0, // the image that will be loaded
 		imgUrls = [],
 		errorTimer,
-		ownerNodeProperty = "ownerNode";
+		ownerNodeProperty = "ownerNode"; // this will be changed later with IE
 	
+	// good old onload event attachment, to remove jQuery dependency
+	function addWindowOnLoad(func) {
+		var oldOnLoad = window.onload;
+		
+		window.onload = function() {
+			oldOnLoad && oldOnLoad();
+			func();
+		};
+	}
 	
 	function init(_settings) {
 		if (_settings) {
@@ -44,7 +63,7 @@ var preloader = (function($, window, document) {
 			}
 		}
 		
-		$(window).load(function() { window.setTimeout(start, 1000); });
+		addWindowOnLoad(function() { window.setTimeout(start, 1000); });
 	}
 
 	// note: we don't use 'this' or the event parameter, so we can
@@ -228,4 +247,4 @@ var preloader = (function($, window, document) {
 	return {
 		init: init
 	};
-})(jQuery, this, document);
+})(this, document);
