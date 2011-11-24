@@ -1,11 +1,10 @@
 /**
  * 
- * Largement inspiré du plugin jQuery preloadCssImages
+ * Was really inspired by jQuery plugin preloadCssImages
  * http://www.filamentgroup.com/examples/preloadImages/scripts/preloadCssImages.jQuery_v5.js
- * utilise aussi http://www.thecssninja.com/css/even-better-image-preloading-with-css2
  * 
- * Sa licence est :
- * 
+ * Its license is:
+ * ----
  * jQuery-Plugin "preloadCssImages"
  * by Scott Jehl, scott@filamentgroup.com
  * http://www.filamentgroup.com
@@ -14,14 +13,11 @@
  * 
  * Copyright (c) 2008 Filament Group, Inc
  * Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL (filamentgroup.com/examples/gpl-license.txt) licenses.
+ * ----
+ * 
+ * We also use the technique described in http://www.thecssninja.com/css/even-better-image-preloading-with-css2
  *
- * Version: 5.0, 10.31.2008
- * Changelog:
- * 	02.20.2008 initial Version 1.0
- *    06.04.2008 Version 2.0 : removed need for any passed arguments. Images load from any and all directories.
- *    06.21.2008 Version 3.0 : Added options for loading status. Fixed IE abs image path bug (thanks Sam Pohlenz).
- *    07.24.2008 Version 4.0 : Added support for @imported CSS (credit: http://marcarea.com/). Fixed support in Opera as well. 
- *    10.31.2008 Version: 5.0 : Many feature and performance enhancements from trixta
+ * we uses jQuery (but try to get rid of it), and lib.cssrule.js for the CSS-loading-mode
  * --------------------------------------------------------------------
  */
 
@@ -32,8 +28,7 @@ var preloader = (function($, window, document) {
 	};
 	
 
-	var allImgs = [],
-		loaded = 0,
+	var loaded = 0, // the image that will be loaded
 		imgUrls = [],
 		errorTimer,
 		ownerNodeProperty = "ownerNode";
@@ -52,7 +47,9 @@ var preloader = (function($, window, document) {
 		$(window).load(function() { window.setTimeout(start, 1000); });
 	}
 
-	function onImgComplete(e){
+	// note: we don't use 'this' or the event parameter, so we can
+	// have simple code to call us
+	function onImgComplete(){
 		window.clearTimeout(errorTimer);
 		if (imgUrls && imgUrls.length && imgUrls[loaded]) {
 			loaded++;
@@ -66,12 +63,12 @@ var preloader = (function($, window, document) {
 		if(imgUrls && imgUrls.length && imgUrls[loaded]){
 			var img = new Image(); //new img obj
 			img.src = imgUrls[loaded];	//set src either absolute or rel to css dir
-			if(!img.complete){
-				$(img).bind('error load onreadystatechange', onImgComplete);
-				// handles 404-Errors in IE
-				errorTimer = window.setTimeout(utils.curry(onImgComplete, $.Event("error")).bind(img), settings.errorDelay);
+			if (img.complete){
+				onImgComplete();
 			} else {
-				onImgComplete.call(img, $.Event("load"));
+				img.onerror = img.onload = img.onreadystatechange = onImgComplete;
+				// handles 404-Errors in IE
+				errorTimer = window.setTimeout(onImgComplete, settings.errorDelay);
 			}
 			
 		}
