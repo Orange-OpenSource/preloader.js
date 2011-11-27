@@ -1,0 +1,58 @@
+body, html {
+	font-size: 100%;
+}
+
+h1 {
+	font-size: 110%;
+}
+
+.images > div {
+	width: 250px;
+	height: 250px;
+	float: left;
+	display: none;
+}
+
+.images {
+	margin: 1em;
+}
+
+.images > div > div {
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: .2em .5em;
+}
+
+
+
+#first .image-01 { background-image: url(images/01.png); }
+#first .image-02 { background-image: url(images/02.png); }
+#first .image-03 { background-image: url(images/03.png); }
+#first .image-04 { background-image: url(images/04.png); }
+#first .image-05 { background-image: url(images/05.png); }
+#first .image-06 { background-image: url(images/06.png); }
+#first .image-07 { background-image: url(images/07.png); }
+#first .image-08 { background-image: url(images/08.png); }
+#first .image-09 { background-image: url(images/09.png); }
+#first .image-10 { background-image: url(images/10.png); }
+#first .image-11 { background-image: url(images/11.png); }
+#first .image-12 { background-image: url(images/12.png); }
+#first .image-13 { background-image: url(images/13.png); }
+#first .image-14 { background-image: url(images/14.png); }
+#first .image-15 { background-image: url(images/15.png); }
+#first .image-16 { background-image: url(images/16.png); }
+#first .image-17 { background-image: url(images/17.png); }
+#first .image-18 { background-image: url(images/18.png); }
+#first .image-19 { background-image: url(images/19.png); }
+#first .image-20 { background-image: url(images/20.png); }
+#first .image-21 { background-image: url(images/21.png); }
+#first .image-22 { background-image: url(images/22.png); }
+#first .image-23 { background-image: url(images/23.png); }
+#first .image-24 { background-image: url(images/24.png); }
+#first .image-25 { background-image: url(images/25.png); }
+#first .image-26 { background-image: url(images/26.png); }
+#first .image-27 { background-image: url(images/27.png); }
+#first .image-28 { background-image: url(images/28.png); }
+#first .image-29 { background-image: url(images/29.png); }
+
