@@ -28,8 +28,7 @@
  * We also use the technique described in
  * http://www.thecssninja.com/css/even-better-image-preloading-with-css2
  *
- * we uses jQuery (but try to get rid of it), and lib.cssrule.js for the
- * CSS-loading-mode.
+ * we also use lib.cssrule.js for the CSS-loading-mode.
  */
 
 var preloader = (function(window, document) {
