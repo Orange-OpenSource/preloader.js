@@ -5,6 +5,8 @@
  * See GPL-LICENSE.txt and MIT-LICENSE.txt files for more details.
  */
  
+(function(window, document) {
+
 /* preloader.js
  * Version : 1
  * 
@@ -31,7 +33,6 @@
  * we also use lib.cssrule.js for the CSS-loading-mode.
  */
 
-var preloader = (function(window, document) {
 	var settings = {
 		errorDelay: 999 // handles 404-Errors in IE
 	};
@@ -243,7 +244,7 @@ var preloader = (function(window, document) {
 		// loadImgsWithCss();
 	}
 	
-	return {
+	window.preloader = {
 		init: init
 	};
 })(this, document);
