@@ -78,7 +78,6 @@
 	
 	function loadImgsWithAjax(){
 		//only load 1 image at the same time / most browsers can only handle 2 http requests, 1 should remain for user-interaction (Ajax, other images, normal page requests...)
-		// otherwise set simultaneousCacheLoading to a higher number for simultaneous downloads
 		if(imgUrls && imgUrls.length && imgUrls[loaded]){
 			var img = new Image(); //new img obj
 			img.src = imgUrls[loaded];	//set src either absolute or rel to css dir
