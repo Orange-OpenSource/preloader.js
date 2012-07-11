@@ -21,9 +21,9 @@ This library is a possible solution:
 
 How ?
 -----
-# Insert the `lib.preloader.js` script.
-# add a `class="preload"` on the style you want to preload
-# call `preloader.init()`. Usually, we do this late, like after the
+1. Insert the `lib.preloader.js` script.
+2. add a `class="preload"` on the style you want to preload
+3. call `preloader.init()`. Usually, we do this late, like after the
 `onload` event, so that it doesn't prevent the application to load
 fast.
 
