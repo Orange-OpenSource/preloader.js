@@ -12,7 +12,7 @@ The fix is easy: you have to download the resource in background. Well,
 this is easy if you only have one resource, but if you have plenty,
 problems occurs:
 * you have to be careful to not download every resources at the same time
-* using JavaScript to preload resources whereas using CSS to
+* using JavaScript to preload resources when using CSS to
 actually use your resources leads to out of sync files
 
 This library is a possible solution:
@@ -23,7 +23,7 @@ How ?
 -----
 # Insert the `lib.preloader.js` script.
 # add a `class="preload"` on the style you want to preload
-# call `preloader.init()`. Usually, we do this later, like after the
+# call `preloader.init()`. Usually, we do this late, like after the
 `onload` event, so that it doesn't prevent the application to load
 fast.
 
@@ -56,3 +56,9 @@ when there are too many resources, this is not so good because it
 impacts performance.
 
 This mode was less tested so there could be some problems.
+
+Especially, it seems that this mode doesn't work well in Internet Explorer
+8 and some versions of Opera. And it certainly doesn't work at all in 
+earlier versions of IE7. However it seems that IE6/7/8 don't have
+the performance improvement of not loading files that are not used,
+so, well, they're already preloaded.
