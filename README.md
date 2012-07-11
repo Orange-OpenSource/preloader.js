@@ -62,3 +62,8 @@ Especially, it seems that this mode doesn't work well in Internet Explorer
 earlier versions of IE7. However it seems that IE6/7/8 don't have
 the performance improvement of not loading files that are not used,
 so, well, they're already preloaded.
+
+One example
+-----
+[The website](http://orange-opensource.github.com/preloader.js/) contains
+a simple example to get you started.
