@@ -8,7 +8,14 @@ h1 {
     font-size: 1.5em;
     color: black;
     font-weight: normal;
+    vertical-align: middle;
 }
+
+h1 img {
+    vertical-align: text-bottom;
+    margin: 0 .5em;
+}
+
 h1 a {
     text-decoration: none;
 }
